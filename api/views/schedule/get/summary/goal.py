@@ -50,7 +50,7 @@ class GoalView(ApiView):
                 goal_q.put(new_goal)
 
         # Make sure completed is accurate
-        completed = total_child_tasks / total_child_tasks_completed == 1
+        completed = total_child_tasks == 0 or total_child_tasks / total_child_tasks_completed == 1
         if goal.completed is not completed:
             goal.completed = completed
             goal.save()
