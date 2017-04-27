@@ -20,7 +20,6 @@ class Task(models.Model):
 
     # Identity information
     created_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     parent_goal = models.ForeignKey(to=Goal, on_delete=models.CASCADE)
     task_type = models.PositiveSmallIntegerField(choices=Type.choices)
 

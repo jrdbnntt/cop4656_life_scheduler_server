@@ -12,17 +12,13 @@ class RequestForm(forms.Form):
     goal_id = forms.IntegerField()
 
 
-class ResponseForm(forms.Form):
-    pass
-
-
 class GoalView(ApiView):
     request_form_class = RequestForm
     response_form_class = ResponseForm
     access_manager = acl.AccessManager(acl_accept=[acl.groups.USER])
 
     def work(self, request, req: dict, res: dict):
-        goal = Goal.objects.filter(id=req['goal_id']).all()
+        goal = Goal.objects.filter(id=req['goal_id'], user=request.user).all()
         if len(goal) == 0:
             raise ValidationError('Invalid goal_id')
         goal.delete()
