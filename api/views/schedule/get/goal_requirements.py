@@ -15,8 +15,8 @@ class RequestForm(forms.Form):
 
 
 class ResponseForm(forms.Form):
-    goal_ids = JsonField()
-    task_ids = JsonField()
+    goal_ids = JsonField()      # List of integer ids
+    task_ids = JsonField()      # List of integer ids
 
 
 class GoalRequirementsView(ApiView):

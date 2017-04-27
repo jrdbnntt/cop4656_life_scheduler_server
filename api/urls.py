@@ -15,5 +15,7 @@ urlpatterns = [
     url(r'schedule/get/goal_requirements$', views.schedule.get.GoalRequirementsView.as_view()),
     url(r'schedule/get/time_allotments$', views.schedule.get.TimeAllotmentsView.as_view()),
     url(r'schedule/get/details/goal$', views.schedule.get.details.GoalView.as_view()),
-    url(r'schedule/get/details/task$', views.schedule.get.details.TaskView.as_view())
+    url(r'schedule/get/details/task$', views.schedule.get.details.TaskView.as_view()),
+    url(r'schedule/get/summary/goal$', views.schedule.get.summary.GoalView.as_view()),
+    url(r'schedule/get/summary/task$', views.schedule.get.summary.TaskView.as_view())
 ]
