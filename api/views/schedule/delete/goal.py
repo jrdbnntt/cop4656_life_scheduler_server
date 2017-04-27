@@ -4,10 +4,12 @@
 from django import forms
 from jrdbnntt_com.views.generic import ApiView
 from jrdbnntt_com.util import acl
+from api.models import Goal
+from django.core.exceptions import ValidationError
 
 
 class RequestForm(forms.Form):
-    pass
+    goal_id = forms.IntegerField()
 
 
 class ResponseForm(forms.Form):
@@ -20,4 +22,7 @@ class GoalView(ApiView):
     access_manager = acl.AccessManager(acl_accept=[acl.groups.USER])
 
     def work(self, request, req: dict, res: dict):
-        pass
+        goal = Goal.objects.filter(id=req['goal_id']).all()
+        if len(goal) == 0:
+            raise ValidationError('Invalid goal_id')
+        goal.delete()
