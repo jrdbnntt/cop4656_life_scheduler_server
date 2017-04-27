@@ -14,7 +14,7 @@ from config.keys import Keys, get_key
 import os
 import re
 
-URL_BASE = "https://lifescheduler.cop4656.jrdbnntt.com"
+URL_BASE = "https://lifescheduler.jrdbnntt.com"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,8 +35,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '[::1]',
-    'lifescheduler.cop4656.jrdbnntt.com',
-    '.lifescheduler.cop4656.jrdbnntt.com'
+    'lifescheduler.jrdbnntt.com',
+    '.lifescheduler.jrdbnntt.com'
 ]
 
 
