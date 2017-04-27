@@ -31,7 +31,7 @@ class Task(models.Model):
     priority = models.PositiveIntegerField()
     total_time_required_m = models.PositiveIntegerField(null=True, blank=True)
     completion_verification_required = models.BooleanField(default=True)
-    completed = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)      # Only true if expressly confirmed
 
     def __str__(self) -> str:
         return '[{} {}]'.format(self.__class__.__name__, self.title)
