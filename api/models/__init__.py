@@ -1,0 +1,1 @@
+from .extended_user_info import ExtendedUserInfo
