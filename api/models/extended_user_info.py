@@ -14,7 +14,7 @@ class ExtendedUserInfo(models.Model):
 
 
 @admin.register(ExtendedUserInfo, site=site_admin)
-class ExtendedUserInfo(admin.ModelAdmin):
+class ExtendedUserInfoAdmin(admin.ModelAdmin):
     list_filter = ()
     list_display = ('id', 'user')
     list_editable = ()
