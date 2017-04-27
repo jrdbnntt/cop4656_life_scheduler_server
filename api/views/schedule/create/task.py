@@ -40,7 +40,7 @@ class TaskView(ApiView):
                 and (req['fixed_time_allotment_start'] is None or req['fixed_time_allotment_end'] is None):
             raise ValidationError('Missing fixed_time_allotment for Fixed Event')
 
-        task = Task(
+        task = Task.objects.create(
             parent_goal=parent_goal,
             task_type=req['task_type'],
             title=req['title'],
