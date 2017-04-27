@@ -26,7 +26,7 @@ class Goal(models.Model):
         source = self
         while True:
             value = getattr(source, attribute, None)
-            if value is not None:
+            if value is not None or len(str(value).strip()) == 0:
                 return value
             if source.parent_goal is None:
                 break

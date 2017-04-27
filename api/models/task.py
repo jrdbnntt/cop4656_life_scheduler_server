@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.contrib import admin
 from cop4656_life_scheduler.admin import site_admin
 from api.models import Goal
@@ -25,8 +24,8 @@ class Task(models.Model):
 
     # Basic information
     title = models.CharField(max_length=100)
-    description = models.CharField(max_length=1000)
-    location = models.CharField(max_length=500, null=True, blank=True)
+    description = models.CharField(max_length=1000, default='')
+    location = models.CharField(max_length=500, default='')
 
     # Scheduling information
     priority = models.PositiveIntegerField()
