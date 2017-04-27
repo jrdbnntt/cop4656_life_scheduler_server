@@ -26,10 +26,12 @@ class GoalRequirementsView(ApiView):
 
     def work(self, request, req: dict, res: dict):
         task_ids = []
+        goal_ids = []
 
         if req['parent_goal_id'] is None:
             # Return top-level goals
-            goal_ids = Goal.objects.filter(user=request.user).values_list('id', flat=True)
+            for goal in Goal.objects.filter(user=request.user, parent_goal__isnull=True):
+                goal_ids.append(goal.id)
         else:
             # Return goals & tasks from parent goal
             parent_goal = Goal.objects.filter(id=req['parent_goal_id'], user=request.user).all()
@@ -37,8 +39,10 @@ class GoalRequirementsView(ApiView):
                 raise ValidationError('Invalid parent_goal_id')
             parent_goal = parent_goal[0]
 
-            goal_ids = Goal.objects.filter(parent_goal=parent_goal).values_list('id', flat=True)
-            task_ids = Task.objects.filter(parent_goal=parent_goal).values_list('id', flat=True)
+            for goal in Goal.objects.filter(parent_goal=parent_goal):
+                goal_ids.append(goal.id)
+            for task in Task.objects.filter(parent_goal=parent_goal):
+                task_ids.append(task.id)
 
         res['goal_ids'] = goal_ids
         res['task_ids'] = task_ids
