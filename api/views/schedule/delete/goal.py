@@ -14,7 +14,6 @@ class RequestForm(forms.Form):
 
 class GoalView(ApiView):
     request_form_class = RequestForm
-    response_form_class = ResponseForm
     access_manager = acl.AccessManager(acl_accept=[acl.groups.USER])
 
     def work(self, request, req: dict, res: dict):
