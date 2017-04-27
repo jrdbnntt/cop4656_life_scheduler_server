@@ -29,7 +29,7 @@ class GoalRequirementsView(ApiView):
 
         if req['parent_goal_id'] is None:
             # Return top-level goals
-            goal_ids = Goal.objects.filter(user=request.user, parent_goal__isnull=True).values_list('id', flat=True)
+            goal_ids = Goal.objects.filter(user=request.user).values_list('id', flat=True)
         else:
             # Return goals & tasks from parent goal
             parent_goal = Goal.objects.filter(id=req['parent_goal_id'], user=request.user).all()
